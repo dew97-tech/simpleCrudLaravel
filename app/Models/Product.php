@@ -15,3 +15,7 @@ class Product extends Model
         'details'
     ];
 }
+
+// How we can connect 2 models 
+
+// array theke perticular ID wise array data show

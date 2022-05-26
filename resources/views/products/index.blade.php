@@ -5,8 +5,21 @@
     <div class="row">
         <div class="col-lg-12">
             
-            <div class="pull-right my-3">
-                <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a>
+            <form action="{{ route('index')}}" method="GET">
+                <div class="form-group">
+                    <input type="search" name="query" class="form-control" placeholder="Search Name or ID">
+                </div>
+                <button class="btn btn-primary">Search</button>
+                
+            </form>
+            @if($products != '')
+                <div class="pull-right my-3">
+                    <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a>
+                </div>
+            
+            @endif
+            <div class="pull-left my-3">
+                <a class="btn btn-secondary" href="{{ route('products.index') }}"> Homepage </a>
             </div>
         </div>
     </div>

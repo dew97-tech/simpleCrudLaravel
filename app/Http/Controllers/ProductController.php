@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+
+
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -12,12 +14,24 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
         $products = Product::latest()->paginate(3);
-
-        return view('products.index',compact('products'))->with(request()->input('page'));
+        if(isset($_GET['query'])){
+            $search = $_GET['query'];
+            $products = Product::where('name','LIKE',"%".$search."%")->orWhere('id','LIKE',"%".$search."%")->paginate(3);
+            return view('products.index',compact('products'));
+        }
+        else{
+            return view('products.index',compact('products'))->with(request()->input('page'));
+        }
+        
+        
+        
+        
+        
+        // return view('products.index',compact('products'))->with(request()->input('page'));
     }
     /**
      * Show the form for creating a new resource.
