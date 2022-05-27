@@ -14,5 +14,7 @@ use App\Http\Controllers\ProductController;
 */
 
 Route::get('/',  [ProductController::class, 'index'])->name('index');
+Route::get('/category',  [ProductController::class, 'CategoryIndex'])->name('CategoryIndex');
 
 Route::resource('products', ProductController::class);
+Route::resource('category', ProductController::class);

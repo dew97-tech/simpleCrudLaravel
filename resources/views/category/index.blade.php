@@ -5,24 +5,21 @@
     <div class="row">
         <div class="col-lg-12">
             
-            <form action="{{ route('index')}}" method="GET">
+            <form action="{{ route('category.index')}}" method="GET">
                 <div class="form-group">
                     <input type="search" name="query" class="form-control" placeholder="Search Name or ID">
                 </div>
                 <button class="btn btn-primary">Search</button>
                 
             </form>
-            @if($products != '')
+            @if($category != '')
                 <div class="pull-right my-3">
-                    <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a>
+                    <a class="btn btn-success" href="{{ route('category.create') }}"> Create New Category</a>
                 </div>
             
             @endif
             <div class="pull-left my-3">
-                <a class="btn btn-secondary" href="{{ route('products.index') }}"> Homepage </a>
-            </div>
-            <div class="pull-left my-3">
-                <a class="btn btn-secondary" href="{{ route('category.index') }}"> Go to Category </a>
+                <a class="btn btn-secondary" href="{{ route('category.index') }}"> Homepage </a>
             </div>
         </div>
     </div>
@@ -37,18 +34,18 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Details</th>
+            <th>Phone No</th>
             <th width="280px">Action</th>
         </tr>
-        @foreach ($products as $product)
+        @foreach ($category as $data)
         <tr>
-            <td>{{ $product->id }}</td>
-            <td>{{ $product->name }}</td>
-            <td>{{ $product->details }}</td>
+            <td>{{ $data->id }}</td>
+            <td>{{ $data->name }}</td>
+            <td>{{ $data->'phone number' }}</td>
             <td>
-                <form action="{{ route('products.destroy',$product->id) }}" method="POST">
-                    <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a>
-                    <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Edit</a>
+                <form action="{{ route('products.destroy',$data->id) }}" method="POST">
+                    <a class="btn btn-info" href="{{ route('products.show',$data->id) }}">Show</a>
+                    <a class="btn btn-primary" href="{{ route('products.edit',$data->id) }}">Edit</a>
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Delete</button>
@@ -58,7 +55,7 @@
         @endforeach
 
     </table>
-    {{ $products->links() }}
+    {{ $category->links() }}
 
 
 @endsection

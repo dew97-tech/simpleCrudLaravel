@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 
 
 use Illuminate\Http\Request;
@@ -121,4 +122,63 @@ class ProductController extends Controller
         return redirect()->route('products.index')
                         ->with('success','Product deleted successfully.');
     }
+    
+    public function CategoryStore(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'phone number' => 'required',
+        ]);
+
+        Category::create($request->all());
+
+        return redirect()->route('category.index')
+                        ->with('success','Category created successfully.');
+    }
+
+    public function CategoryDestroy(Category $category)
+    {
+        //Delete the Product
+        $category->delete();
+        return redirect()->route('category.index')
+                        ->with('success','category deleted successfully.');
+    }
+
+
+    public function CategoryUpdate(Request $request, Category $category)
+    {
+        //Update 
+        $request->validate([
+            'name' => 'required',
+            'phone number' => 'required',
+        ]);
+
+        $category->update($request->all());
+
+        return redirect()->route('category.index')
+                        ->with('success','Category updated successfully.');
+    }
+
+    public function CategoryEdit(Category $category)
+    {
+        //Edit The Data
+        return view('category.edit',compact('category'));
+    }
+
+    public function CategoryIndex(Request $request)
+    {
+        //
+        dd("I am in "); 
+        $category = Category::latest()->paginate(3);
+        if(isset($_GET['query'])){
+            $search = $_GET['query'];
+            $category = Category::where('name','LIKE',"%".$search."%")->orWhere('phone number','LIKE',"%".$search."%")->paginate(3);
+            return view('category.index',compact('category'));
+        }
+        else{
+            return view('category.index',compact('category'))->with(request()->input('page'));
+        }
+    }
 }
+// Check if route is :
+    
