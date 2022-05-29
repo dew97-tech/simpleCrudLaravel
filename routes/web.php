@@ -14,9 +14,9 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
-Route::get('/',  [ProductController::class, 'index'])->name('index');
-// Route::get('/category',  [CategoryController::class, 'index']);
-Route::get('/category',  'CategoryController@index')->name('index');
+// Route::get('/',  [ProductController::class, 'index'])->name('index');
+Route::get('/',  [CategoryController::class, 'index'])->name('index');
+// Route::get('/category',  'CategoryController@index')->name('index');
 
-Route::resource('products', ProductController::class);
-// Route::resource('category', App\Http\Controllers\CategoryController);
+// Route::resource('products', ProductController::class);
+Route::resource('category', CategoryController::class);
