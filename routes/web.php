@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +15,8 @@ use App\Http\Controllers\ProductController;
 */
 
 Route::get('/',  [ProductController::class, 'index'])->name('index');
-Route::get('/category',  [ProductController::class, 'CategoryIndex'])->name('CategoryIndex');
+// Route::get('/category',  [CategoryController::class, 'index']);
+Route::get('/category',  'CategoryController@index')->name('index');
 
 Route::resource('products', ProductController::class);
-Route::resource('category', ProductController::class);
+// Route::resource('category', App\Http\Controllers\CategoryController);

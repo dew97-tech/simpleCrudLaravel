@@ -11,6 +11,6 @@ class Category extends Model
 
     protected $fillable = [
         'name',
-        'phone number'
+        'phone_number'
     ];
 }

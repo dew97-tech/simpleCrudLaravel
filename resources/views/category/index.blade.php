@@ -1,11 +1,11 @@
-@extends('products.layout')
+@extends('category.layout')
 
 @section('content')
 {{-- Create Product --}}
     <div class="row">
         <div class="col-lg-12">
             
-            <form action="{{ route('category.index')}}" method="GET">
+            <form action="{{ route('index')}}" method="GET">
                 <div class="form-group">
                     <input type="search" name="query" class="form-control" placeholder="Search Name or ID">
                 </div>
@@ -19,7 +19,7 @@
             
             @endif
             <div class="pull-left my-3">
-                <a class="btn btn-secondary" href="{{ route('category.index') }}"> Homepage </a>
+                <a class="btn btn-secondary" href="{{ route('category.index') }}"> Return To Dashboard </a>
             </div>
         </div>
     </div>
@@ -41,11 +41,11 @@
         <tr>
             <td>{{ $data->id }}</td>
             <td>{{ $data->name }}</td>
-            <td>{{ $data->'phone number' }}</td>
+            <td>{{ $data->phone_number}}</td>
             <td>
-                <form action="{{ route('products.destroy',$data->id) }}" method="POST">
-                    <a class="btn btn-info" href="{{ route('products.show',$data->id) }}">Show</a>
-                    <a class="btn btn-primary" href="{{ route('products.edit',$data->id) }}">Edit</a>
+                <form action="{{ route('category.destroy',$data->id) }}" method="POST">
+                    <a class="btn btn-info" href="{{ route('category.show',$data->id) }}">Show</a>
+                    <a class="btn btn-primary" href="{{ route('category.edit',$data->id) }}">Edit</a>
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Delete</button>

@@ -1,4 +1,4 @@
-@extends('products.layout')
+@extends('category.layout')
 
 @section('content')
     <div class="row">
@@ -23,7 +23,7 @@
         </div>
     @endif
 
-    <form action="{{ route('category.update',$product->id) }}" method="POST">
+    <form action="{{ route('category.update',$category->id) }}" method="POST">
         @csrf
         @method('PUT')
 
@@ -37,7 +37,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Phone No:</strong>
-                    <textarea class="form-control" style="height:150px" name="details" placeholder="Detail">{{ $category->'phone number' }}</textarea>
+                    <textarea class="form-control" style="height:150px" name="phone_number" placeholder="phone_number">{{ $category->'phone_number' }}</textarea>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
