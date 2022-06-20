@@ -14,7 +14,7 @@
     </div>
 
     <div class="container">
-        @yield('content')
+        @yield('content_category')
     </div>
 </body>
 </html>

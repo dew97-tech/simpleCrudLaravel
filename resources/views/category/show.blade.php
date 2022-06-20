@@ -1,6 +1,6 @@
 @extends('category.layout')
 
-@section('content')
+@section('content_category')
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
@@ -15,14 +15,14 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Name:</strong>
+                <strong>Phone Name:</strong>
                 {{ $category->name }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>PhoneNo:</strong>
-                {{ $category->phone_number }}
+                <strong>Android Version:</strong>
+                {{ $category->android_version }}
             </div>
         </div>
     </div>

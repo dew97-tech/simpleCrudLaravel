@@ -1,6 +1,6 @@
 @extends('category.layout')
 
-@section('content')
+@section('content_category')
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
@@ -30,14 +30,14 @@
          <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Name:</strong>
+                    <strong>Phone Name:</strong>
                     <input type="text" name="name" value="{{ $category->name }}" class="form-control" placeholder="Name">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Phone No:</strong>
-                    <textarea class="form-control" style="height:150px" name="phone_number" placeholder="phone_number">{{ $category->'phone_number' }}</textarea>
+                    <strong>Andriod Version:</strong>
+                    <textarea class="form-control" style="height:150px" name="android_version" placeholder="phone_number">{{ $category->'android_version' }}</textarea>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">

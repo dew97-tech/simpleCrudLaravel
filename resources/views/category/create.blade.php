@@ -1,7 +1,7 @@
 @extends('category.layout')
 
 
-@section('content')
+@section('content_category')
 
 {{-- Add Cateogry Route --}}
 <div class="row">
@@ -34,14 +34,14 @@
      <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Name:</strong>
+                <strong>Phone Name:</strong>
                 <input type="text" name="name" class="form-control" placeholder="Name">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Phone No:</strong>
-                <textarea class="form-control" style="height:150px" name="phone_number" placeholder="phone_number"></textarea>
+                <strong>Android Version:</strong>
+                <textarea class="form-control" style="height:150px" name="android_version" placeholder="Android Version"></textarea>
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">

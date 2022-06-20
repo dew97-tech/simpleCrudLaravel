@@ -12,8 +12,14 @@ class Product extends Model
 
     protected $fillable = [
         'name',
-        'details'
+        'details',
+        'category_id',
+        
     ];
+
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
 }
 
 // How we can connect 2 models 

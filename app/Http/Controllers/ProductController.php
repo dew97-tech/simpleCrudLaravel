@@ -21,7 +21,9 @@ class ProductController extends Controller
         $products = Product::latest()->paginate(3);
         if(isset($_GET['query'])){
             $search = $_GET['query'];
+            // $products = Product::with('category')->find($search)->get();
             $products = Product::where('name','LIKE',"%".$search."%")->orWhere('id','LIKE',"%".$search."%")->paginate(3);
+            // $products = Product::find($search);
             return view('products.index',compact('products'));
         }
         else{
@@ -55,6 +57,10 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required',
             'details' => 'required',
+            'category_id' => 'required',
+            
+            
+            
         ]);
 
         Product::create($request->all());
@@ -101,6 +107,8 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required',
             'details' => 'required',
+            'category_id' => 'required',
+            
         ]);
 
         $product->update($request->all());

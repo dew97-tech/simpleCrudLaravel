@@ -7,17 +7,17 @@
             
             <form action="{{ route('index')}}" method="GET">
                 <div class="form-group">
-                    <input type="search" name="query" class="form-control" placeholder="Search Name or ID">
+                    <input type="search" name="query" class="form-control" placeholder="Search Phone or Model">
                 </div>
                 <button class="btn btn-primary">Search</button>
                 
             </form>
-            @if($products != '')
+           
                 <div class="pull-right my-3">
                     <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a>
                 </div>
             
-            @endif
+            
             <div class="pull-left my-3">
                 <a class="btn btn-secondary" href="{{ route('products.index') }}"> Homepage </a>
             </div>
@@ -35,16 +35,21 @@
 {{-- Show Data Layout --}}
     <table class="table table-bordered">
         <tr>
-            <th>ID</th>
+            <th>Product_ID</th>
             <th>Name</th>
             <th>Details</th>
+            <th>Model No</th>
+            <th>Android Version</th>
             <th width="280px">Action</th>
         </tr>
         @foreach ($products as $product)
         <tr>
-            <td>{{ $product->id }}</td>
+            <td>{{ $loop->iteration }}</td>
             <td>{{ $product->name }}</td>
             <td>{{ $product->details }}</td>
+            <td>{{ $product->category->name }}</td>
+            <td>{{ $product->category->android_version }}</td>
+            
             <td>
                 <form action="{{ route('products.destroy',$product->id) }}" method="POST">
                     <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a>
