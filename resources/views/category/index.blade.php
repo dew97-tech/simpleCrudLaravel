@@ -35,25 +35,26 @@
     <table class="table table-bordered">
         <tr>
             <th>ID</th>
-            <th>Name</th>
-            <th>Model No</th>
-            <th>Android Version</th>
-            <th>Description</th>
+            {{-- <th>Name</th> --}}
+            <th>Title</th>
+            {{-- <th>Android Version</th> --}}
+            {{-- <th>Description</th> --}}
             <th width="280px">Action</th>
         </tr>
-        @foreach ($products as $product)
+        @foreach ($categories as $category)
         <tr>
             
-            <td>{{ $product->id }}</td>
-            <td>{{ $product->name }}</td>
-            <td>{{ $product->category->name }}</td>
-            <td>{{ $product->category->android_version}}</td>
-            <td>{{ $product->details }}</td>
+            <td>{{ $category->id }}</td>
+            {{-- <td>{{ $category->category_product->product_id }}</td> --}}
+            <td>{{ $category->title }}</td>
+            {{-- <td>{{ $product->category->title }}</td> --}}
+            {{-- <td>{{ $product->category->android_version}}</td>
+            <td>{{ $product->details }}</td> --}}
             <td>
             
-                <form action="{{ route('category.destroy',$product->id) }}" method="POST">
-                    <a class="btn btn-info" href="{{ route('category.show',$product->id) }}">Show</a>
-                    <a class="btn btn-primary" href="{{ route('category.edit',$product->id) }}">Edit</a>
+                <form action="{{ route('category.destroy',$category->id) }}" method="POST">
+                    <a class="btn btn-info" href="{{ route('category.show',$category->id) }}">Show</a>
+                    <a class="btn btn-primary" href="{{ route('category.edit',$category->id) }}">Edit</a>
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Delete</button>
@@ -63,7 +64,7 @@
         @endforeach
 
     </table>
-    {{-- {{ $categories>links() }} --}}
+    {{ $categories->links()}}
 
 
 @endsection

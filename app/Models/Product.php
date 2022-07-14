@@ -12,13 +12,13 @@ class Product extends Model
 
     protected $fillable = [
         'name',
-        'details',
-        'category_id',
+        'price'
+    
         
     ];
 
-    public function category(){
-        return $this->belongsTo(Category::class);
+    public function categories(){
+        return $this->belongsToMany(Category::class,'category_products');
     }
 }
 

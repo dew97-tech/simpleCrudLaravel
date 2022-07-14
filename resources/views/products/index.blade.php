@@ -37,18 +37,20 @@
         <tr>
             <th>Product_ID</th>
             <th>Name</th>
-            <th>Details</th>
+            <th>Price</th>
+            {{-- <th>Details</th>
             <th>Model No</th>
-            <th>Android Version</th>
+            <th>Android Version</th> --}}
             <th width="280px">Action</th>
         </tr>
         @foreach ($products as $product)
         <tr>
             <td>{{ $loop->iteration }}</td>
             <td>{{ $product->name }}</td>
-            <td>{{ $product->details }}</td>
-            <td>{{ $product->category->name }}</td>
-            <td>{{ $product->category->android_version }}</td>
+            <td>{{ $product->price }}</td>
+            {{-- <td>{{ $product->details }}</td> --}}
+            {{-- <td>{{ $product->category_products->category_id }}</td> --}}
+            {{-- <td>{{ $product->category->android_version }}</td>  --}}
             
             <td>
                 <form action="{{ route('products.destroy',$product->id) }}" method="POST">

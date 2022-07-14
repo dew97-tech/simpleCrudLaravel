@@ -17,43 +17,33 @@ class CategoryController extends Controller
     {
         //
         // dd(' Category Index e asi');
-        $category = Category::latest()->paginate(3);
-        // if(isset($_GET['query'])){
-        //     $search = $_GET['query'];
-        //     $category = Category::where('name','LIKE',"%".$search."%")->orWhere('phone_number','LIKE',"%".$search."%")->paginate(3);
-        //     return view('category.index',compact('category'));
-        // }
-        // else{
-        //     return view('category.index',compact('category'))->with(request()->input('page'));
-        // }
-        
-        $products = Product::with('category')->get();
+        $categories = Category::latest()->paginate(3);
+
+        // ---------------------------------------------------------
+        // for one to many relationship
+        // $products = Product::with('category_product')->get();
         // dd($products);
-        $categories = Category::with('products')->get();
+        // $categories = Category::with('products')->get();
         // dd($categories);
-        return view('category.index',compact('products','categories'))->with(request()->input('page'));
+        return view('category.index',compact('categories'))->with(request()->input('page'));
+        // ---------------------------------------------------------
     }
     
     public function edit(Category $category)
     {
-        //Edit The Data
-        // dd(' I am in Category Index');
         return view('category.edit',compact('category'));
     }
     
     public function show(Category $category)
     {
-        //Show Product
         return view('category.show',compact('category'));
-
     }
 
 
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'android_version' => 'required',
+            'title' => 'required',
         ]);
 
         Category::create($request->all());
@@ -80,8 +70,7 @@ class CategoryController extends Controller
     {
         //Update 
         $request->validate([
-            'name' => 'required',
-            'android_version' => 'required',
+            'title' => 'required',
         ]);
 
         $category->update($request->all());

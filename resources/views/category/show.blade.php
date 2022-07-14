@@ -15,15 +15,15 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Phone Name:</strong>
-                {{ $category->name }}
+                <strong>Title:</strong>
+                {{ $category->title }}
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        {{-- <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Android Version:</strong>
                 {{ $category->android_version }}
             </div>
-        </div>
+        </div> --}}
     </div>
 @endsection

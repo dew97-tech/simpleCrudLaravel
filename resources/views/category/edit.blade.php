@@ -30,16 +30,17 @@
          <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Phone Name:</strong>
-                    <input type="text" name="name" value="{{ $category->name }}" class="form-control" placeholder="Name">
+                    <strong>Title:</strong>
+                    <input type="text" name="title" value="{{ $category->title }}" class="form-control" placeholder="Name">
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            {{-- For One to Many Relationship --}}
+            {{-- <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Andriod Version:</strong>
                     <textarea class="form-control" style="height:150px" name="android_version" placeholder="phone_number">{{ $category->'android_version' }}</textarea>
                 </div>
-            </div>
+            </div> --}}
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>

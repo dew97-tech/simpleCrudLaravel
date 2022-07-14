@@ -13,11 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
+      
         Schema::create('categories', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name',255);
-            $table->string('android_version',20);
+            $table->id();
+            $table->string('title');
+            
             $table->timestamps();
+
+
+            // -----FOR ONE TO MANY REALTIONSHIP
+            // $table->string('name',255);
+            // $table->string('android_version',20);
         });
     }
 

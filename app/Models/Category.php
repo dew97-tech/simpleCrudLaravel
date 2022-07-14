@@ -11,10 +11,16 @@ class Category extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'android_version',
+        'title',
     ];
+
+    // For one to many relationship
+    // public function products(){
+    //     return $this->hasMany(Product::class,'category_id','id');
+    // }
+
+    // For many to many relationship
     public function products(){
-        return $this->hasMany(Product::class,'category_id','id');
+        return $this->belongsToMany(Product::class,'category_products');
     }
 }

@@ -35,21 +35,28 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Name:</strong>
-                <input type="text" name="name" class="form-control" placeholder="Name">
+                <textarea class="form-control" name="name"  placeholder="Name"></textarea>
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Detail:</strong>
-                <textarea class="form-control" style="height:150px" name="details" placeholder="Detail"></textarea>
+                <strong>Price:</strong>
+                <textarea class="form-control" style="height:150px" name="price" placeholder="Price"></textarea>
             </div>
         </div>
+        {{-- Connecting to categoryID --}}
         <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Insert Category:</strong>
+                <textarea class="form-control" style="height:150px" name="category_id" placeholder="categoryID"></textarea>
+            </div>
+        </div>
+        {{-- <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Category:</strong>
                 <textarea class="form-control" style="height:150px" name="category_id" placeholder="Detail"></textarea>
             </div>
-        </div>
+        </div> --}}
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
         </div>

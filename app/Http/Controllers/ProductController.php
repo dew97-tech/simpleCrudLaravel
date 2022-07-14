@@ -17,7 +17,9 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+        
         //
+        
         $products = Product::latest()->paginate(3);
         if(isset($_GET['query'])){
             $search = $_GET['query'];
@@ -27,6 +29,8 @@ class ProductController extends Controller
             return view('products.index',compact('products'));
         }
         else{
+            
+            // // dd($products);
             return view('products.index',compact('products'))->with(request()->input('page'));
         }
         
@@ -54,18 +58,40 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        // Product::create([
+        //     'name' => $request->name,
+        //     'price'=>$request->price,
+        //     // 'category_id' => $request->category_id,       
+        // ]);
+
         $request->validate([
             'name' => 'required',
-            'details' => 'required',
-            'category_id' => 'required',
-            
-            
-            
+            'price' => 'required',
+            // 'details' => 'required',
+            'category_id' => 'required',       
         ]);
+        
+        $product = new Product();
 
-        Product::create($request->all());
+        $product ->name = $request->input('name');
+        $product ->price = $request->input('price');
 
-        return redirect()->route('products.index')
+        $ck=$product->save(); 
+        // dd($product) ;
+
+        
+
+         
+        
+        $product->categories()->attach($request->input('category_id'));
+        
+        
+        
+        
+        
+        
+        // return view('products.index',compact('products'))->with(request()->input('page'));
+        return redirect()->route('products.index',compact('product'))
                         ->with('success','Product created successfully.');
     }
 
@@ -106,8 +132,10 @@ class ProductController extends Controller
         //Update 
         $request->validate([
             'name' => 'required',
-            'details' => 'required',
-            'category_id' => 'required',
+            'price' => 'required',
+            // 'category_id' => 'required',
+            // 'details' => 'required',
+            // 'category_id' => 'required',
             
         ]);
 
@@ -126,6 +154,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //Delete the Product
+        $product->categories()->detach();
         $product->delete();
         return redirect()->route('products.index')
                         ->with('success','Product deleted successfully.');
